@@ -50,11 +50,11 @@
                 <!-- Answer buttons will be created here -->
             </div>
         </div>
-        <div id="feedback-popup" class="d-none">
+        <div id="feedback-popup" class="popup d-none">
             <p id="feedback-message"></p>
-            <button class="btn btn-primary" onclick="nextQuestion()">Next Question</button>
+            <button id="next-button" class="btn btn-primary d-none" onclick="nextQuestion()">Next Question</button>
         </div>
-        <div id="congrats-popup" class="d-none text-center">
+        <div id="congrats-popup" class="popup d-none text-center">
             <h3>Congratulations!</h3>
             <p>You've completed the game!</p>
             <div id="fireworks-container"></div>

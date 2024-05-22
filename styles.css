@@ -79,7 +79,7 @@ body {
     text-align: center;
 }
 
-#feedback-popup, #congrats-popup {
+.popup {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -89,6 +89,12 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     z-index: 10;
+    text-align: center;
+}
+
+#feedback-popup p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
 }
 
 #fireworks-container {
@@ -99,6 +105,12 @@ body {
     display: block;
     width: 100%;
     margin: 10px 0;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.answer-btn:hover {
+    transform: scale(1.05);
+    background-color: #ffd700; /* Bright yellow */
 }
 
 @media (max-width: 576px) {

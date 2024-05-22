@@ -59,14 +59,18 @@ function loadQuestion() {
 
 function checkAnswer(index) {
     const questionData = questions[currentQuestionIndex];
+    let feedbackMessage;
     if (index === questionData.correct) {
-        points += 100;
-        document.getElementById('feedback-message').innerText = 'Correct!';
+        points += 10;
+        feedbackMessage = 'Correct!';
+        document.getElementById('next-button').classList.remove('d-none');
     } else {
-        points -= 50;
-        document.getElementById('feedback-message').innerText = 'Incorrect!';
+        points -= 1;
+        feedbackMessage = 'Incorrect!';
+        document.getElementById('next-button').classList.add('d-none');
     }
     document.getElementById('points').innerText = points;
+    document.getElementById('feedback-message').innerText = feedbackMessage;
     document.getElementById('feedback-popup').classList.remove('d-none');
 }
 
