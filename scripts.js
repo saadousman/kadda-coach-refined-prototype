@@ -91,6 +91,7 @@ function showDifficultySelection() {
 }
 
 function startGame(difficulty) {
+    resetGameState();
     document.getElementById('logo-container').classList.add('d-none');
     document.getElementById('difficulty-screen').classList.add('d-none');
     document.getElementById('game-screen').classList.remove('d-none');
@@ -101,30 +102,32 @@ function startGame(difficulty) {
     } else if (difficulty === 'Advanced') {
         questions = advancedQuestions;
     }
-    currentQuestionIndex = 0;
     loadQuestion();
 }
 
 function goBackToMain() {
+    resetGameState();
     document.getElementById('logo-container').classList.remove('d-none');
     document.getElementById('main-screen').classList.remove('d-none');
     document.getElementById('difficulty-screen').classList.add('d-none');
     document.getElementById('game-screen').classList.add('d-none');
-    document.getElementById('comprehension-game').classList.add('d-none');
-    document.getElementById('feedback-popup').classList.add('d-none');
     document.getElementById('congrats-page').classList.add('d-none');
-    points = 0;
-    document.getElementById('points').innerText = points;
 }
 
 function goBackToDifficulty() {
+    resetGameState();
     document.getElementById('difficulty-screen').classList.remove('d-none');
     document.getElementById('game-screen').classList.add('d-none');
-    document.getElementById('comprehension-game').classList.add('d-none');
-    document.getElementById('feedback-popup').classList.add('d-none');
     document.getElementById('congrats-page').classList.add('d-none');
+}
+
+function resetGameState() {
+    currentQuestionIndex = 0;
     points = 0;
     document.getElementById('points').innerText = points;
+    document.getElementById('feedback-popup').classList.add('d-none');
+    document.getElementById('next-button').classList.add('d-none');
+    updateProgressBar();
 }
 
 function loadQuestion() {
