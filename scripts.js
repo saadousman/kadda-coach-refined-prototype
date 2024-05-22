@@ -16,10 +16,6 @@ const easyQuestions = [
         answers: ['Running', 'Dancing', 'Sleeping', 'Cooking'],
         correct: 1
     },
-    // Add more easy questions here
-];
-
-const advancedQuestions = [
     {
         video: 'https://www.youtube.com/embed/5NV6Rdv1a3I',
         question: 'What is the color of the car?',
@@ -32,7 +28,57 @@ const advancedQuestions = [
         answers: ['Love', 'Adventure', 'Mystery', 'Friendship'],
         correct: 0
     },
-    // Add more advanced questions here
+    {
+        video: 'https://www.youtube.com/embed/hT_nvWreIhg',
+        question: 'What are they talking about?',
+        answers: ['Weather', 'Food', 'Travel', 'Music'],
+        correct: 2
+    },
+    {
+        video: 'https://www.youtube.com/embed/YQHsXMglC9A',
+        question: 'What is the singer feeling?',
+        answers: ['Happy', 'Sad', 'Angry', 'Excited'],
+        correct: 1
+    }
+];
+
+const advancedQuestions = [
+    {
+        video: 'https://www.youtube.com/embed/L_jWHffIx5E',
+        question: 'What is the theme of the video?',
+        answers: ['Comedy', 'Drama', 'Action', 'Sci-fi'],
+        correct: 0
+    },
+    {
+        video: 'https://www.youtube.com/embed/2vjPBrBU-TM',
+        question: 'What is the artist primarily doing?',
+        answers: ['Singing', 'Dancing', 'Cooking', 'Playing Guitar'],
+        correct: 1
+    },
+    {
+        video: 'https://www.youtube.com/embed/uelHwf8o7_U',
+        question: 'What is the primary color theme of the video?',
+        answers: ['Black and White', 'Red', 'Blue', 'Green'],
+        correct: 0
+    },
+    {
+        video: 'https://www.youtube.com/embed/9bZkp7q19f0',
+        question: 'What is the main activity in the video?',
+        answers: ['Running', 'Dancing', 'Swimming', 'Singing'],
+        correct: 1
+    },
+    {
+        video: 'https://www.youtube.com/embed/3tmd-ClpJxA',
+        question: 'What is the main character doing?',
+        answers: ['Driving', 'Flying', 'Sailing', 'Riding'],
+        correct: 3
+    },
+    {
+        video: 'https://www.youtube.com/embed/lY2yjAdbvdQ',
+        question: 'What is the main theme of the song?',
+        answers: ['Love', 'Happiness', 'Sadness', 'Excitement'],
+        correct: 0
+    }
 ];
 
 let currentQuestionIndex = 0;
@@ -55,6 +101,7 @@ function startGame(difficulty) {
     } else if (difficulty === 'Advanced') {
         questions = advancedQuestions;
     }
+    currentQuestionIndex = 0;
     loadQuestion();
 }
 
@@ -66,8 +113,6 @@ function goBackToMain() {
     document.getElementById('comprehension-game').classList.add('d-none');
     document.getElementById('feedback-popup').classList.add('d-none');
     document.getElementById('congrats-page').classList.add('d-none');
-    currentQuestionIndex = 0;
-    updateProgressBar();
     points = 0;
     document.getElementById('points').innerText = points;
 }
@@ -78,8 +123,6 @@ function goBackToDifficulty() {
     document.getElementById('comprehension-game').classList.add('d-none');
     document.getElementById('feedback-popup').classList.add('d-none');
     document.getElementById('congrats-page').classList.add('d-none');
-    currentQuestionIndex = 0;
-    updateProgressBar();
     points = 0;
     document.getElementById('points').innerText = points;
 }
