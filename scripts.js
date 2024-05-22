@@ -46,6 +46,7 @@ let currentQuestionIndex = 0;
 let points = 0;
 
 function startGame(gameTitle) {
+    document.getElementById('logo-container').classList.add('d-none');
     document.getElementById('main-screen').classList.add('d-none');
     document.getElementById('game-screen').classList.remove('d-none');
     document.getElementById('game-title').innerText = gameTitle;
@@ -57,6 +58,7 @@ function startGame(gameTitle) {
 }
 
 function goBackToMain() {
+    document.getElementById('logo-container').classList.remove('d-none');
     document.getElementById('main-screen').classList.remove('d-none');
     document.getElementById('game-screen').classList.add('d-none');
     document.getElementById('comprehension-game').classList.add('d-none');

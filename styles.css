@@ -31,6 +31,13 @@ body {
     margin-top: 1rem;
 }
 
+.fun-message {
+    font-size: 1.5rem;
+    color: #ffcc00; /* Yellow color */
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
 .game-tile {
     margin-bottom: 10px;
     text-align: center;
