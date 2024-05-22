@@ -9,7 +9,7 @@ body {
     background-color: #ffffff; /* Light background */
     padding: 0.5rem 1rem;
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -39,6 +39,7 @@ body {
     transition: transform 0.2s, box-shadow 0.2s;
     background-color: #ffffff; /* White background */
     border-radius: 8px; /* Rounded edges */
+    cursor: pointer;
 }
 
 .game-tile:hover {
@@ -60,6 +61,10 @@ body {
 .game-tile .card-body:active {
     background-color: #f5b700; /* Darker yellow when clicked */
     color: #ffffff; /* White text when clicked */
+}
+
+.d-none {
+    display: none;
 }
 
 @media (max-width: 576px) {

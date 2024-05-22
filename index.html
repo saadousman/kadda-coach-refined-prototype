@@ -19,27 +19,27 @@
             </span>
         </div>
     </nav>
-    <div class="container mt-4 text-center">
+    <div id="logo-container" class="container mt-4 text-center">
         <img src="https://i.ibb.co/DQqCC6G/OIG1-1.jpg" alt="Kadda Coach" class="logo">
     </div>
-    <div class="container mt-4">
+    <div id="main-screen" class="container mt-4">
         <div class="row">
             <div class="col-12 col-sm-6 mb-3">
-                <div class="card game-tile">
+                <div class="card game-tile" onclick="startGame('Game 1')">
                     <div class="card-body">
                         <h5 class="card-title">Game 1</h5>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-sm-6 mb-3">
-                <div class="card game-tile">
+                <div class="card game-tile" onclick="startGame('Game 2')">
                     <div class="card-body">
                         <h5 class="card-title">Game 2</h5>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-sm-6 mb-3">
-                <div class="card game-tile">
+                <div class="card game-tile" onclick="startGame('Game 3')">
                     <div class="card-body">
                         <h5 class="card-title">Game 3</h5>
                     </div>
@@ -48,9 +48,11 @@
             <!-- Add more game tiles as needed -->
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <div id="game-screen" class="container mt-4 d-none">
+        <h2 id="game-title"></h2>
+        <p>This is where the game will be played.</p>
+        <button class="btn btn-primary" onclick="goBackToMain()">Back to Main Screen</button>
+    </div>
     <script src="scripts.js"></script>
 </body>
 </html>
