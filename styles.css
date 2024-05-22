@@ -16,7 +16,7 @@ body {
 .navbar-text {
     font-size: 1em;
     font-weight: bold;
-    color: #ffcc00; /* Yellow text */
+    color: #000000; /* Black text */
 }
 
 .coin-icon {
