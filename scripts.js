@@ -93,14 +93,14 @@ function checkAnswer(index) {
         points += 10;
         feedbackMessage = 'Correct!';
         document.getElementById('next-button').classList.remove('d-none');
-
-        // Check if it is the last question
+        
+        // Check if it's the last question
         if (currentQuestionIndex === questions.length - 1) {
             document.getElementById('next-button').innerText = 'Finish';
-            document.getElementById('next-button').onclick = () => showCongrats();
+            document.getElementById('next-button').onclick = showCongrats;
         } else {
             document.getElementById('next-button').innerText = 'Next Question';
-            document.getElementById('next-button').onclick = () => nextQuestion();
+            document.getElementById('next-button').onclick = nextQuestion;
         }
     } else {
         points -= 1;
