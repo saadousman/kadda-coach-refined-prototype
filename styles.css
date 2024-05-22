@@ -6,21 +6,16 @@ body {
 }
 
 .navbar {
-    background-color: #333333; /* Dark background */
+    background-color: #ffffff; /* Light background */
     padding: 0.5rem 1rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    position: relative;
-}
-
-.navbar-brand {
-    font-weight: bold;
-    color: #ffcc00; /* Yellow text */
 }
 
 .navbar-text {
     font-size: 1em;
+    font-weight: bold;
     color: #ffcc00; /* Yellow text */
 }
 
@@ -30,9 +25,10 @@ body {
 }
 
 .logo {
-    height: 80px; /* Larger logo */
+    height: 120px; /* Larger logo */
     border-radius: 15px; /* Rounded edges */
     border: 2px solid #ffcc00; /* Yellow border */
+    margin-top: 1rem;
 }
 
 .game-tile {
@@ -71,11 +67,11 @@ body {
         height: 100px;
     }
 
-    .navbar-brand {
-        font-size: 1.2em;
-    }
-
     .navbar-text {
         font-size: 0.9em;
+    }
+
+    .logo {
+        height: 100px; /* Adjust logo size for smaller screens */
     }
 }
