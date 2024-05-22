@@ -61,7 +61,7 @@ function goBackToMain() {
     document.getElementById('game-screen').classList.add('d-none');
     document.getElementById('comprehension-game').classList.add('d-none');
     document.getElementById('feedback-popup').classList.add('d-none');
-    document.getElementById('congrats-popup').classList.add('d-none');
+    document.getElementById('congrats-page').classList.add('d-none');
     currentQuestionIndex = 0;
     updateProgressBar();
 }
@@ -131,16 +131,10 @@ function updateProgressBar() {
 }
 
 function showCongrats() {
-    document.getElementById('game-container').classList.add('d-none');
+    document.getElementById('game-screen').classList.add('d-none');
     document.getElementById('feedback-popup').classList.add('d-none');
-    document.getElementById('congrats-popup').classList.remove('d-none');
+    document.getElementById('congrats-page').classList.remove('d-none');
     document.getElementById('final-score').innerText = `Your final score is: ${points}`;
-    showFireworks();
-}
-
-function showFireworks() {
-    const fireworksContainer = document.getElementById('fireworks-container');
-    // Add fireworks animation logic here
 }
 
 function shareAchievement() {

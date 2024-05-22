@@ -54,16 +54,20 @@
             <p id="feedback-message"></p>
             <button id="next-button" class="btn btn-primary d-none" onclick="nextQuestion()">Next Question</button>
         </div>
-        <div id="congrats-popup" class="popup d-none text-center">
-            <h3>Congratulations!</h3>
-            <p>You've completed the game!</p>
-            <p id="final-score"></p>
-            <p>By participating in this game, you've improved your spoken English skills by listening carefully and understanding the content. Keep practicing to enhance your skills further!</p>
-            <div id="fireworks-container"></div>
-            <button class="btn btn-primary" onclick="shareAchievement()">Share Achievement</button>
-        </div>
         <button class="btn btn-primary mt-3" onclick="goBackToMain()">Back to Main Screen</button>
     </div>
+
+    <!-- Congratulations Page -->
+    <div id="congrats-page" class="container mt-4 d-none">
+        <div class="text-center">
+            <div id="smiley-animation"></div>
+            <h3>Congratulations!</h3>
+            <p id="final-score"></p>
+            <p>Well done, you are great!</p>
+        </div>
+        <button class="btn btn-primary mt-3" onclick="shareAchievement()">Share Achievement</button>
+    </div>
+
     <script src="scripts.js"></script>
 </body>
 </html>

@@ -114,6 +114,14 @@ body {
     height: 200px;
 }
 
+#smiley-animation {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    background-image: url('https://i.imgur.com/4ai7nkI.gif'); /* Smiley face animation */
+    background-size: cover;
+}
+
 .answer-btn {
     display: block;
     width: 100%;
