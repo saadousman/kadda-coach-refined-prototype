@@ -38,7 +38,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
     background-color: #ffffff; /* White background */
-    border-radius: 8px; /* Rounded edges */
+    border-radius: 15px; /* Rounded edges */
     cursor: pointer;
 }
 
@@ -53,7 +53,7 @@ body {
     align-items: center;
     height: 120px;
     background-color: #ffcc00; /* Yellow background */
-    border-radius: 8px;
+    border-radius: 15px;
     color: #000000; /* Black text */
     transition: background-color 0.2s, color 0.2s;
 }
@@ -115,11 +115,9 @@ body {
 }
 
 #smiley-animation {
-    width: 100px;
-    height: 100px;
     margin: 0 auto 20px;
-    background-image: url('https://i.imgur.com/4ai7nkI.gif'); /* Smiley face animation */
-    background-size: cover;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 .answer-btn {
@@ -127,6 +125,7 @@ body {
     width: 100%;
     margin: 10px 0;
     transition: transform 0.2s, background-color 0.2s;
+    border-radius: 15px;
 }
 
 .answer-btn:hover {
@@ -138,6 +137,7 @@ body {
     background-color: #ffcc00;
     border-color: #ffcc00;
     color: #000;
+    border-radius: 15px;
 }
 
 .btn-primary:hover {

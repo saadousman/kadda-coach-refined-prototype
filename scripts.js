@@ -73,7 +73,7 @@ function loadQuestion() {
     }
 
     const questionData = questions[currentQuestionIndex];
-    document.getElementById('video-container').innerHTML = `<iframe width="100%" height="315" src="${questionData.video}" frameborder="0" allowfullscreen></iframe>`;
+    document.getElementById('video-container').innerHTML = `<iframe width="100%" height="200" src="${questionData.video}" frameborder="0" allowfullscreen class="rounded-frame"></iframe>`;
     document.getElementById('question').innerText = questionData.question;
     const answersContainer = document.getElementById('answers-container');
     answersContainer.innerHTML = '';
