@@ -75,7 +75,21 @@ function loadQuestion() {
     }
 
     const questionData = questions[currentQuestionIndex];
-    document.getElementById('video-container').innerHTML = `<iframe width="100%" height="200" src="${questionData.video}" frameborder="0" allowfullscreen class="rounded-frame"></iframe>`;
+    const videoContainer = document.getElementById('video-container');
+    videoContainer.innerHTML = '<div id="loader" class="loader"></div>';
+    const iframe = document.createElement('iframe');
+    iframe.width = '100%';
+    iframe.height = '200';
+    iframe.src = questionData.video;
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+    iframe.classList.add('rounded-frame');
+    iframe.onload = function() {
+        document.getElementById('loader').classList.add('d-none');
+        iframe.classList.remove('d-none');
+    };
+    iframe.classList.add('d-none');
+    videoContainer.appendChild(iframe);
     document.getElementById('question').innerText = questionData.question;
     const answersContainer = document.getElementById('answers-container');
     answersContainer.innerHTML = '';
@@ -143,8 +157,8 @@ function shareAchievement() {
     if (navigator.share) {
         navigator.share({
             title: 'Kadda Coach',
-            text: 'I completed the comprehension game!',
-            url: window.location.href
+            text: 'I completed the comprehension game and scored high! Check out this awesome GIF!',
+            url: 'https://giphy.com/embed/xT0GqssRweIhlz209i' // Link to the GIF
         });
     } else {
         alert('Web Share API is not supported in your browser.');
