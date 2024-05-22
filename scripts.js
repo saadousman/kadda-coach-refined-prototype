@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('username').innerText = 'JohnDoe';
 });
 
-const questions = [
+const easyQuestions = [
     {
         video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         question: 'What is the color of the sky in the video?',
@@ -16,6 +16,10 @@ const questions = [
         answers: ['Running', 'Dancing', 'Sleeping', 'Cooking'],
         correct: 1
     },
+    // Add more easy questions here
+];
+
+const advancedQuestions = [
     {
         video: 'https://www.youtube.com/embed/5NV6Rdv1a3I',
         question: 'What is the color of the car?',
@@ -28,38 +32,48 @@ const questions = [
         answers: ['Love', 'Adventure', 'Mystery', 'Friendship'],
         correct: 0
     },
-    {
-        video: 'https://www.youtube.com/embed/hT_nvWreIhg',
-        question: 'What are they talking about?',
-        answers: ['Weather', 'Food', 'Travel', 'Music'],
-        correct: 2
-    },
-    {
-        video: 'https://www.youtube.com/embed/YQHsXMglC9A',
-        question: 'What is the singer feeling?',
-        answers: ['Happy', 'Sad', 'Angry', 'Excited'],
-        correct: 1
-    },
+    // Add more advanced questions here
 ];
 
 let currentQuestionIndex = 0;
 let points = 0;
+let questions = [];
 
-function startGame(gameTitle) {
-    document.getElementById('logo-container').classList.add('d-none');
+function showDifficultySelection() {
     document.getElementById('main-screen').classList.add('d-none');
-    document.getElementById('game-screen').classList.remove('d-none');
-    document.getElementById('game-title').innerText = gameTitle;
+    document.getElementById('difficulty-screen').classList.remove('d-none');
+}
 
-    if (gameTitle === 'Comprehension Game') {
-        document.getElementById('comprehension-game').classList.remove('d-none');
-        loadQuestion();
+function startGame(difficulty) {
+    document.getElementById('logo-container').classList.add('d-none');
+    document.getElementById('difficulty-screen').classList.add('d-none');
+    document.getElementById('game-screen').classList.remove('d-none');
+    document.getElementById('game-title').innerText = `${difficulty} Comprehension Game`;
+
+    if (difficulty === 'Easy') {
+        questions = easyQuestions;
+    } else if (difficulty === 'Advanced') {
+        questions = advancedQuestions;
     }
+    loadQuestion();
 }
 
 function goBackToMain() {
     document.getElementById('logo-container').classList.remove('d-none');
     document.getElementById('main-screen').classList.remove('d-none');
+    document.getElementById('difficulty-screen').classList.add('d-none');
+    document.getElementById('game-screen').classList.add('d-none');
+    document.getElementById('comprehension-game').classList.add('d-none');
+    document.getElementById('feedback-popup').classList.add('d-none');
+    document.getElementById('congrats-page').classList.add('d-none');
+    currentQuestionIndex = 0;
+    updateProgressBar();
+    points = 0;
+    document.getElementById('points').innerText = points;
+}
+
+function goBackToDifficulty() {
+    document.getElementById('difficulty-screen').classList.remove('d-none');
     document.getElementById('game-screen').classList.add('d-none');
     document.getElementById('comprehension-game').classList.add('d-none');
     document.getElementById('feedback-popup').classList.add('d-none');

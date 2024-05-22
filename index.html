@@ -26,7 +26,7 @@
     <div id="main-screen" class="container mt-4">
         <div class="row">
             <div class="col-12 col-sm-6 mb-3">
-                <div class="card game-tile" onclick="startGame('Comprehension Game')">
+                <div class="card game-tile" onclick="showDifficultySelection()">
                     <div class="card-body">
                         <h5 class="card-title">Comprehension Game</h5>
                     </div>
@@ -35,6 +35,21 @@
             <!-- Add more game tiles as needed -->
         </div>
     </div>
+    
+    <!-- Difficulty Selection Screen -->
+    <div id="difficulty-screen" class="container mt-4 d-none">
+        <h2>Select Difficulty</h2>
+        <div class="row">
+            <div class="col-12 col-sm-6 mb-3">
+                <button class="btn btn-primary w-100" onclick="startGame('Easy')">Easy</button>
+            </div>
+            <div class="col-12 col-sm-6 mb-3">
+                <button class="btn btn-primary w-100" onclick="startGame('Advanced')">Advanced</button>
+            </div>
+        </div>
+        <button class="btn btn-primary mt-3" onclick="goBackToMain()">Back to Main Screen</button>
+    </div>
+
     <div id="game-screen" class="container mt-4 d-none">
         <h2 id="game-title"></h2>
         <div id="comprehension-game" class="game-container">
@@ -56,7 +71,7 @@
             <p id="feedback-message"></p>
             <button id="next-button" class="btn btn-primary d-none" onclick="nextQuestion()">Next Question</button>
         </div>
-        <button class="btn btn-primary mt-3" onclick="goBackToMain()">Back to Main Screen</button>
+        <button class="btn btn-primary mt-3" onclick="goBackToDifficulty()">Back to Difficulty Selection</button>
     </div>
 
     <!-- Congratulations Page -->
