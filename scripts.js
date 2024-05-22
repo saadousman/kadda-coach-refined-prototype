@@ -10,7 +10,36 @@ const questions = [
         answers: ['Red', 'Blue', 'Green', 'Yellow'],
         correct: 1
     },
-    // Add more questions as needed
+    {
+        video: 'https://www.youtube.com/embed/3JZ_D3ELwOQ',
+        question: 'What is the main character doing?',
+        answers: ['Running', 'Dancing', 'Sleeping', 'Cooking'],
+        correct: 1
+    },
+    {
+        video: 'https://www.youtube.com/embed/5NV6Rdv1a3I',
+        question: 'What is the color of the car?',
+        answers: ['Red', 'Blue', 'Black', 'White'],
+        correct: 2
+    },
+    {
+        video: 'https://www.youtube.com/embed/kJQP7kiw5Fk',
+        question: 'What is the main theme of the song?',
+        answers: ['Love', 'Adventure', 'Mystery', 'Friendship'],
+        correct: 0
+    },
+    {
+        video: 'https://www.youtube.com/embed/hT_nvWreIhg',
+        question: 'What are they talking about?',
+        answers: ['Weather', 'Food', 'Travel', 'Music'],
+        correct: 2
+    },
+    {
+        video: 'https://www.youtube.com/embed/YQHsXMglC9A',
+        question: 'What is the singer feeling?',
+        answers: ['Happy', 'Sad', 'Angry', 'Excited'],
+        correct: 1
+    },
 ];
 
 let currentQuestionIndex = 0;
@@ -95,6 +124,7 @@ function updateProgressBar() {
 function showCongrats() {
     document.getElementById('game-container').classList.add('d-none');
     document.getElementById('congrats-popup').classList.remove('d-none');
+    document.getElementById('final-score').innerText = `Your final score is: ${points}`;
     showFireworks();
 }
 
