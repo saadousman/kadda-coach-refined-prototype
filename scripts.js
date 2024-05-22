@@ -127,6 +127,9 @@ function resetGameState() {
     document.getElementById('points').innerText = points;
     document.getElementById('feedback-popup').classList.add('d-none');
     document.getElementById('next-button').classList.add('d-none');
+    document.getElementById('video-container').innerHTML = '';
+    document.getElementById('question').innerText = '';
+    document.getElementById('answers-container').innerHTML = '';
     updateProgressBar();
 }
 
