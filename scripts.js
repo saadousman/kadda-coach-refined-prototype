@@ -10,6 +10,18 @@ const questions = [
         answers: ['Red', 'Blue', 'Green', 'Yellow'],
         correct: 1
     },
+    {
+        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        question: 'Who let the dogs out?',
+        answers: ['Red', 'Blue', 'Green', 'Yellow'],
+        correct: 1
+    },
+    {
+        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        question: 'is it just me?',
+        answers: ['Red', 'Blue', 'Green', 'Yellow'],
+        correct: 1
+    },
     // Add more questions as needed
 ];
 
