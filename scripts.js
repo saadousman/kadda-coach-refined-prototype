@@ -10,18 +10,6 @@ const questions = [
         answers: ['Red', 'Blue', 'Green', 'Yellow'],
         correct: 1
     },
-    {
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-        question: 'Who let the dogs out?',
-        answers: ['Red', 'Blue', 'Green', 'Yellow'],
-        correct: 1
-    },
-    {
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-        question: 'is it just me?',
-        answers: ['Red', 'Blue', 'Green', 'Yellow'],
-        correct: 1
-    },
     // Add more questions as needed
 ];
 
@@ -85,14 +73,17 @@ function checkAnswer(index) {
     document.getElementById('feedback-message').innerText = feedbackMessage;
     document.getElementById('feedback-popup').classList.remove('d-none');
 
-    setTimeout(() => {
-        document.getElementById('feedback-popup').classList.add('d-none');
-    }, 2000);
+    if (index !== questionData.correct) {
+        setTimeout(() => {
+            document.getElementById('feedback-popup').classList.add('d-none');
+        }, 2000);
+    }
 }
 
 function nextQuestion() {
     currentQuestionIndex++;
     updateProgressBar();
+    document.getElementById('feedback-popup').classList.add('d-none');
     loadQuestion();
 }
 
