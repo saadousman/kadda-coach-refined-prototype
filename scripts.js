@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('points').innerText = '1500';
+    document.getElementById('points').innerText = '0';
     document.getElementById('username').innerText = 'JohnDoe';
 });
 
@@ -43,7 +43,7 @@ const questions = [
 ];
 
 let currentQuestionIndex = 0;
-let points = 1500;
+let points = 0;
 
 function startGame(gameTitle) {
     document.getElementById('main-screen').classList.add('d-none');
@@ -64,6 +64,8 @@ function goBackToMain() {
     document.getElementById('congrats-page').classList.add('d-none');
     currentQuestionIndex = 0;
     updateProgressBar();
+    points = 0;
+    document.getElementById('points').innerText = points;
 }
 
 function loadQuestion() {
