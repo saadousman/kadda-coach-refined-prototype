@@ -21,9 +21,7 @@ function startGame(gameTitle) {
     document.getElementById('game-screen').classList.remove('d-none');
     document.getElementById('game-title').innerText = gameTitle;
 
-    if (gameTitle === 'Game 1') {
-        document.getElementById('game-1').classList.remove('d-none');
-    } else if (gameTitle === 'Game 2') {
+    if (gameTitle === 'Comprehension Game') {
         document.getElementById('comprehension-game').classList.remove('d-none');
         loadQuestion();
     }
@@ -32,26 +30,11 @@ function startGame(gameTitle) {
 function goBackToMain() {
     document.getElementById('main-screen').classList.remove('d-none');
     document.getElementById('game-screen').classList.add('d-none');
-    document.getElementById('game-1').classList.add('d-none');
     document.getElementById('comprehension-game').classList.add('d-none');
     document.getElementById('feedback-popup').classList.add('d-none');
     document.getElementById('congrats-popup').classList.add('d-none');
     currentQuestionIndex = 0;
     updateProgressBar();
-}
-
-function playWord() {
-    const audio = new Audio('path_to_your_audio_file.mp3');
-    audio.play();
-    document.getElementById('feedback').innerText = 'Listen to the word and try to pronounce it!';
-}
-
-function recordPronunciation() {
-    // Mock recording functionality
-    document.getElementById('feedback').innerText = 'Recording...';
-    setTimeout(() => {
-        document.getElementById('feedback').innerText = 'Your pronunciation is great!';
-    }, 2000);
 }
 
 function loadQuestion() {

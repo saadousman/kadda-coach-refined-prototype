@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kadda Coach - Game 1</title>
+    <title>Kadda Coach - Comprehension Game</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -25,23 +25,9 @@
     <div id="main-screen" class="container mt-4">
         <div class="row">
             <div class="col-12 col-sm-6 mb-3">
-                <div class="card game-tile" onclick="startGame('Game 1')">
+                <div class="card game-tile" onclick="startGame('Comprehension Game')">
                     <div class="card-body">
-                        <h5 class="card-title">Game 1</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 mb-3">
-                <div class="card game-tile" onclick="startGame('Game 2')">
-                    <div class="card-body">
-                        <h5 class="card-title">Game 2</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 mb-3">
-                <div class="card game-tile" onclick="startGame('Game 3')">
-                    <div class="card-body">
-                        <h5 class="card-title">Game 3</h5>
+                        <h5 class="card-title">Comprehension Game</h5>
                     </div>
                 </div>
             </div>
@@ -50,12 +36,7 @@
     </div>
     <div id="game-screen" class="container mt-4 d-none">
         <h2 id="game-title"></h2>
-        <div id="game-1" class="game-container d-none">
-            <button class="btn btn-primary" onclick="playWord()">Play Word</button>
-            <button class="btn btn-secondary" onclick="recordPronunciation()">Record Pronunciation</button>
-            <p id="feedback"></p>
-        </div>
-        <div id="comprehension-game" class="game-container d-none">
+        <div id="comprehension-game" class="game-container">
             <div class="progress mb-4">
                 <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
