@@ -72,12 +72,15 @@ function checkAnswer(index) {
     document.getElementById('points').innerText = points;
     document.getElementById('feedback-message').innerText = feedbackMessage;
     document.getElementById('feedback-popup').classList.remove('d-none');
+
+    setTimeout(() => {
+        document.getElementById('feedback-popup').classList.add('d-none');
+    }, 2000);
 }
 
 function nextQuestion() {
     currentQuestionIndex++;
     updateProgressBar();
-    document.getElementById('feedback-popup').classList.add('d-none');
     loadQuestion();
 }
 
