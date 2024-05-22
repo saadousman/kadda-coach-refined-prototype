@@ -67,6 +67,40 @@ body {
     display: none;
 }
 
+.progress {
+    height: 25px;
+}
+
+.progress-bar {
+    background-color: #ffcc00;
+}
+
+#game-container {
+    text-align: center;
+}
+
+#feedback-popup, #congrats-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 10;
+}
+
+#fireworks-container {
+    height: 200px;
+}
+
+.answer-btn {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+}
+
 @media (max-width: 576px) {
     .game-tile .card-body {
         height: 100px;
