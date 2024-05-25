@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('username').innerText = 'JohnDoe';
 });
 
+// Initialize variables
 let currentQuestionIndex = 0;
 let points = 0;
 let questions = [];
@@ -10,12 +11,14 @@ let currentGame = '';
 let player;
 let isPlayerReady = false;
 
+// Show difficulty selection screen
 function showDifficultySelection(game) {
     currentGame = game;
     document.getElementById('main-screen').classList.add('d-none');
     document.getElementById('difficulty-screen').classList.remove('d-none');
 }
 
+// Start the game with selected difficulty
 function startGame(difficulty) {
     resetGameState();
     document.getElementById('logo-container').classList.add('d-none');
@@ -26,6 +29,7 @@ function startGame(difficulty) {
     loadQuestions(difficulty);
 }
 
+// Go back to main screen
 function goBackToMain() {
     resetGameState();
     document.getElementById('logo-container').classList.remove('d-none');
@@ -35,6 +39,7 @@ function goBackToMain() {
     document.getElementById('congrats-page').classList.add('d-none');
 }
 
+// Go back to difficulty selection screen
 function goBackToDifficulty() {
     resetGameState();
     document.getElementById('difficulty-screen').classList.remove('d-none');
@@ -42,6 +47,7 @@ function goBackToDifficulty() {
     document.getElementById('congrats-page').classList.add('d-none');
 }
 
+// Reset the game state
 function resetGameState() {
     currentQuestionIndex = 0;
     points = 0;
@@ -61,6 +67,7 @@ function resetGameState() {
     updateProgressBar();
 }
 
+// Load questions based on difficulty
 function loadQuestions(difficulty) {
     const filePath = difficulty === 'Easy'
         ? `content/easy${currentGame}Questions.json`
@@ -85,6 +92,7 @@ function loadQuestions(difficulty) {
         });
 }
 
+// Load a question
 function loadQuestion() {
     if (currentQuestionIndex >= questions.length) {
         showCongrats();
@@ -111,11 +119,13 @@ function loadQuestion() {
             startSeconds: questionData.start,
             endSeconds: questionData.end
         });
+        document.getElementById('loader').classList.add('d-none');
     } else {
         onYouTubeIframeAPIReady();
     }
 }
 
+// Initialize YouTube IFrame API
 function onYouTubeIframeAPIReady() {
     const questionData = questions[currentQuestionIndex];
     player = new YT.Player('player', {
@@ -136,12 +146,14 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
+// YouTube player ready event
 function onPlayerReady(event) {
     event.target.playVideo();
     isPlayerReady = true;
     document.getElementById('loader').classList.add('d-none');
 }
 
+// YouTube player state change event
 function onPlayerStateChange(event) {
     const questionData = questions[currentQuestionIndex];
     if (event.data == YT.PlayerState.ENDED) {
@@ -149,6 +161,7 @@ function onPlayerStateChange(event) {
     }
 }
 
+// Check the selected answer
 function checkAnswer(index) {
     const questionData = questions[currentQuestionIndex];
     let feedbackMessage;
@@ -181,6 +194,7 @@ function checkAnswer(index) {
     }
 }
 
+// Load the next question
 function nextQuestion() {
     currentQuestionIndex++;
     updateProgressBar();
@@ -188,11 +202,13 @@ function nextQuestion() {
     loadQuestion();
 }
 
+// Update the progress bar
 function updateProgressBar() {
     const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
     document.getElementById('progress-bar').style.width = `${progress}%`;
 }
 
+// Show the congratulations screen
 function showCongrats() {
     document.getElementById('game-screen').classList.add('d-none');
     document.getElementById('feedback-popup').classList.add('d-none');
@@ -200,6 +216,7 @@ function showCongrats() {
     document.getElementById('final-score').innerText = `Your final score is: ${points}`;
 }
 
+// Share the achievement
 function shareAchievement() {
     if (navigator.share) {
         navigator.share({
