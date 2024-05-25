@@ -48,6 +48,9 @@ function resetGameState() {
     questions = [];
     if (player) {
         player.stopVideo();
+        player.destroy();
+        player = null;
+        isPlayerReady = false;
     }
     document.getElementById('points').innerText = points;
     document.getElementById('feedback-popup').classList.add('d-none');
@@ -56,7 +59,6 @@ function resetGameState() {
     document.getElementById('question').innerText = '';
     document.getElementById('answers-container').innerHTML = '';
     updateProgressBar();
-    isPlayerReady = false;
 }
 
 function loadQuestions(difficulty) {
