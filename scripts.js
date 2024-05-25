@@ -47,7 +47,6 @@ function resetGameState() {
     points = 0;
     questions = [];
     if (player) {
-        player.stopVideo();
         player.destroy();
         player = null;
         isPlayerReady = false;
@@ -99,9 +98,9 @@ function loadQuestion() {
         answersContainer.appendChild(button);
     });
 
-    if (!isPlayerReady) {
+    if (!player) {
         initializeYouTubePlayer(questionData.video, questionData.start, questionData.end);
-    } else {
+    } else if (isPlayerReady) {
         player.cueVideoById({
             videoId: questionData.video,
             startSeconds: questionData.start,
@@ -133,13 +132,18 @@ function onPlayerReady(event) {
     console.log('Player ready');
     isPlayerReady = true;
     document.getElementById('loader').classList.add('d-none');
+    const questionData = questions[currentQuestionIndex];
+    player.cueVideoById({
+        videoId: questionData.video,
+        startSeconds: questionData.start,
+        endSeconds: questionData.end
+    });
     event.target.playVideo();
 }
 
 function onPlayerStateChange(event) {
-    const questionData = questions[currentQuestionIndex];
     if (event.data == YT.PlayerState.ENDED) {
-        console.log('Video ended, looping');
+        const questionData = questions[currentQuestionIndex];
         player.seekTo(questionData.start);
     }
 }
