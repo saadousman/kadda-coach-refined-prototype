@@ -33,9 +33,15 @@ body {
 
 .fun-message {
     font-size: 1.5rem;
-    color: #ffcc00; /* Yellow color */
+    color: #000000; /* Black color */
     font-weight: bold;
     margin-top: 1rem;
+    animation: fadeInOut 3s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
 }
 
 .game-tile {
