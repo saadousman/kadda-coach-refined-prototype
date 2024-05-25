@@ -7,6 +7,7 @@ let currentQuestionIndex = 0;
 let points = 0;
 let questions = [];
 let currentGame = '';
+let player;
 
 function showDifficultySelection(game) {
     currentGame = game;
@@ -44,10 +45,13 @@ function resetGameState() {
     currentQuestionIndex = 0;
     points = 0;
     questions = [];
+    if (player) {
+        player.stopVideo();
+    }
     document.getElementById('points').innerText = points;
     document.getElementById('feedback-popup').classList.add('d-none');
     document.getElementById('next-button').classList.add('d-none');
-    document.getElementById('video-container').innerHTML = '';
+    document.getElementById('video-container').innerHTML = '<div id="loader" class="loader"></div>';
     document.getElementById('question').innerText = '';
     document.getElementById('answers-container').innerHTML = '';
     updateProgressBar();
@@ -85,20 +89,7 @@ function loadQuestion() {
 
     const questionData = questions[currentQuestionIndex];
     const videoContainer = document.getElementById('video-container');
-    videoContainer.innerHTML = '<div id="loader" class="loader"></div>';
-    const iframe = document.createElement('iframe');
-    iframe.width = '100%';
-    iframe.height = '200';
-    iframe.src = questionData.video;
-    iframe.frameBorder = '0';
-    iframe.allowFullscreen = true;
-    iframe.classList.add('rounded-frame');
-    iframe.onload = function() {
-        document.getElementById('loader').classList.add('d-none');
-        iframe.classList.remove('d-none');
-    };
-    iframe.classList.add('d-none');
-    videoContainer.appendChild(iframe);
+    videoContainer.innerHTML = '<div id="loader" class="loader"></div><div id="player"></div>';
     document.getElementById('question').innerText = questionData.question;
     const answersContainer = document.getElementById('answers-container');
     answersContainer.innerHTML = '';
@@ -109,6 +100,47 @@ function loadQuestion() {
         button.onclick = () => checkAnswer(index);
         answersContainer.appendChild(button);
     });
+
+    if (player) {
+        player.loadVideoById({
+            videoId: questionData.video,
+            startSeconds: questionData.start,
+            endSeconds: questionData.end
+        });
+    } else {
+        onYouTubeIframeAPIReady();
+    }
+}
+
+function onYouTubeIframeAPIReady() {
+    const questionData = questions[currentQuestionIndex];
+    player = new YT.Player('player', {
+        height: '200',
+        width: '100%',
+        videoId: questionData.video,
+        playerVars: {
+            'start': questionData.start,
+            'end': questionData.end,
+            'loop': 1,
+            'controls': 0,
+            'modestbranding': 1
+        },
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+
+function onPlayerStateChange(event) {
+    const questionData = questions[currentQuestionIndex];
+    if (event.data == YT.PlayerState.ENDED) {
+        player.seekTo(questionData.start);
+    }
 }
 
 function checkAnswer(index) {
@@ -173,3 +205,9 @@ function shareAchievement() {
         alert('Web Share API is not supported in your browser.');
     }
 }
+
+// Load YouTube IFrame API
+let tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+let firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
