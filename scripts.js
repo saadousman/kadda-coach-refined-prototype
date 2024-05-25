@@ -59,7 +59,12 @@ function loadQuestions(difficulty) {
         : `content/advanced${currentGame}Questions.json`;
     
     fetch(filePath)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to load ${filePath}: ${response.statusText}`);
+            }
+            return response.json();
+        })
         .then(data => {
             questions = data;
             currentQuestionIndex = 0;
@@ -67,7 +72,7 @@ function loadQuestions(difficulty) {
         })
         .catch(error => {
             console.error('Error loading questions:', error);
-            alert('Failed to load questions. Please try again.');
+            alert(`Failed to load questions from ${filePath}. Please check the console for more details.`);
             goBackToDifficulty();
         });
 }
