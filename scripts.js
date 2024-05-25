@@ -8,6 +8,7 @@ let points = 0;
 let questions = [];
 let currentGame = '';
 let player;
+let isPlayerReady = false;
 
 function showDifficultySelection(game) {
     currentGame = game;
@@ -51,10 +52,11 @@ function resetGameState() {
     document.getElementById('points').innerText = points;
     document.getElementById('feedback-popup').classList.add('d-none');
     document.getElementById('next-button').classList.add('d-none');
-    document.getElementById('video-container').innerHTML = '<div id="loader" class="loader"></div>';
+    document.getElementById('video-container').innerHTML = '<div id="loader" class="loader"></div><div id="player"></div>';
     document.getElementById('question').innerText = '';
     document.getElementById('answers-container').innerHTML = '';
     updateProgressBar();
+    isPlayerReady = false;
 }
 
 function loadQuestions(difficulty) {
@@ -101,7 +103,7 @@ function loadQuestion() {
         answersContainer.appendChild(button);
     });
 
-    if (player) {
+    if (isPlayerReady) {
         player.loadVideoById({
             videoId: questionData.video,
             startSeconds: questionData.start,
@@ -134,6 +136,8 @@ function onYouTubeIframeAPIReady() {
 
 function onPlayerReady(event) {
     event.target.playVideo();
+    isPlayerReady = true;
+    document.getElementById('loader').classList.add('d-none');
 }
 
 function onPlayerStateChange(event) {
