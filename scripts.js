@@ -99,7 +99,7 @@ function loadQuestion() {
         answersContainer.appendChild(button);
     });
 
-    if (!player) {
+    if (!isPlayerReady) {
         initializeYouTubePlayer(questionData.video, questionData.start, questionData.end);
     } else {
         player.cueVideoById({
@@ -130,8 +130,8 @@ function initializeYouTubePlayer(videoId, startSeconds, endSeconds) {
 }
 
 function onPlayerReady(event) {
+    console.log('Player ready');
     isPlayerReady = true;
-    loadQuestion(); // Ensure the current question video is loaded
     document.getElementById('loader').classList.add('d-none');
     event.target.playVideo();
 }
@@ -139,6 +139,7 @@ function onPlayerReady(event) {
 function onPlayerStateChange(event) {
     const questionData = questions[currentQuestionIndex];
     if (event.data == YT.PlayerState.ENDED) {
+        console.log('Video ended, looping');
         player.seekTo(questionData.start);
     }
 }
@@ -206,6 +207,10 @@ function shareAchievement() {
 }
 
 // Load YouTube IFrame API
+function onYouTubeIframeAPIReady() {
+    console.log('YouTube API ready');
+}
+
 let tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 let firstScriptTag = document.getElementsByTagName('script')[0];
