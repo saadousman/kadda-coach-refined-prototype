@@ -3,98 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kadda Coach - Comprehension Game</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Kadda Coach</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid justify-content-between">
-            <span class="navbar-text font-weight-bold d-flex align-items-center text-dark">
-                <img src="https://via.placeholder.com/20" alt="Coins" class="coin-icon mr-1"> <span id="points">0</span>
-            </span>
-            <span class="navbar-text font-weight-bold text-dark">
-                <span id="username">JohnDoe</span>
-            </span>
-        </div>
-    </nav>
-    <div id="logo-container" class="container mt-4 text-center">
-        <img src="https://i.ibb.co/DQqCC6G/OIG1-1.jpg" alt="Kadda Coach" class="logo">
+    <div id="logo-container" class="text-center">
+        <img src="https://i.ibb.co/DQqCC6G/OIG1-1.jpg" alt="Kadda Coach Logo" class="logo">
         <p class="fun-message">කඩ්ඩ Polish කරන APP එක</p>
     </div>
-    <div id="main-screen" class="container mt-4">
+    <div id="main-screen" class="container text-center">
         <div class="row">
-            <div class="col-12 col-sm-6 mb-3">
+            <div class="col-12 col-md-4 mb-4">
                 <div class="card game-tile" onclick="showDifficultySelection('Comprehension')">
-                    <div class="card-body">
-                        <h5 class="card-title">Comprehension Game</h5>
-                    </div>
+                    <div class="card-body">Comprehension Game</div>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 mb-3">
+            <div class="col-12 col-md-4 mb-4">
                 <div class="card game-tile" onclick="showDifficultySelection('Translation')">
-                    <div class="card-body">
-                        <h5 class="card-title">Translation Game</h5>
-                    </div>
+                    <div class="card-body">Translation Game</div>
                 </div>
             </div>
-            <!-- Add more game tiles as needed -->
         </div>
     </div>
-    
-    <!-- Difficulty Selection Screen -->
-    <div id="difficulty-screen" class="container mt-4 d-none">
+    <div id="difficulty-screen" class="container text-center d-none">
         <h2>Select Difficulty</h2>
-        <div class="row">
-            <div class="col-12 col-sm-6 mb-3">
-                <button class="btn btn-primary w-100" onclick="startGame('Easy')">Easy</button>
-            </div>
-            <div class="col-12 col-sm-6 mb-3">
-                <button class="btn btn-primary w-100" onclick="startGame('Advanced')">Advanced</button>
-            </div>
-        </div>
-        <button class="btn btn-primary mt-3" onclick="goBackToMain()">Back to Main Screen</button>
+        <button class="btn btn-primary" onclick="startGame('Easy')">Easy</button>
+        <button class="btn btn-primary" onclick="startGame('Advanced')">Advanced</button>
+        <button class="btn btn-secondary mt-4" onclick="goBackToMain()">Back to Home</button>
     </div>
-
-    <div id="game-screen" class="container mt-4 d-none">
+    <div id="game-screen" class="container text-center d-none">
+        <nav class="navbar">
+            <span class="navbar-text">
+                <img src="https://image.shutterstock.com/image-vector/coin-icon-vector-260nw-597649073.jpg" alt="Coin" class="coin-icon">
+                <span id="points">0</span>
+            </span>
+            <span class="navbar-text" id="username">JohnDoe</span>
+        </nav>
         <h2 id="game-title"></h2>
-        <div id="comprehension-game" class="game-container">
-            <div class="progress mb-4">
-                <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div id="video-container" class="mb-4 text-center">
-                <!-- YouTube video will be embedded here -->
-                <div id="loader" class="loader"></div>
-            </div>
-            <div id="question-container" class="mb-4 text-center">
-                <h3 id="question"></h3>
-            </div>
-            <div id="answers-container" class="text-center">
-                <!-- Answer buttons will be created here -->
-            </div>
+        <div class="progress">
+            <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0;"></div>
         </div>
+        <div id="video-container" class="my-4">
+            <div id="loader" class="loader"></div>
+            <div id="player"></div>
+        </div>
+        <p id="question" class="my-4"></p>
+        <div id="answers-container"></div>
         <div id="feedback-popup" class="popup d-none">
             <p id="feedback-message"></p>
-            <button id="next-button" class="btn btn-primary d-none" onclick="nextQuestion()">Next Question</button>
         </div>
-        <button class="btn btn-primary mt-3" onclick="goBackToDifficulty()">Back to Difficulty Selection</button>
+        <button id="next-button" class="btn btn-primary d-none">Next Question</button>
+        <button class="btn btn-secondary mt-4" onclick="goBackToDifficulty()">Back to Difficulty</button>
     </div>
-
-    <!-- Congratulations Page -->
-    <div id="congrats-page" class="container mt-4 d-none">
-        <div class="text-center">
-            <div id="smiley-animation">
-                <iframe src="https://giphy.com/embed/xT0GqssRweIhlz209i" width="480" height="320" frameBorder="0" class="giphy-embed rounded-frame" allowFullScreen></iframe>
-            </div>
-            <h3>Congratulations!</h3>
-            <p id="final-score"></p>
-            <p>Well done, you are great!</p>
-            <button class="btn btn-primary mt-3" onclick="goBackToMain()">Back to Homepage</button>
-            <button class="btn btn-primary mt-3" onclick="shareAchievement()">Share Achievement</button>
-        </div>
+    <div id="congrats-page" class="container text-center d-none">
+        <h2>Congratulations!</h2>
+        <iframe src="https://giphy.com/embed/xT0GqssRweIhlz209i" width="480" height="320" frameBorder="0" class="giphy-embed rounded-frame" allowFullScreen></iframe>
+        <p id="final-score" class="my-4"></p>
+        <p>Well done you are great!</p>
+        <button class="btn btn-primary" onclick="goBackToMain()">Go to Home</button>
+        <button class="btn btn-secondary" onclick="shareAchievement()">Share Achievement</button>
     </div>
-
     <script src="scripts.js"></script>
 </body>
 </html>
