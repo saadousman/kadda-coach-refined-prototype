@@ -8,6 +8,7 @@ let points = 0;
 let questions = [];
 let currentGame = '';
 let player;
+let isPlayerReady = false;
 
 function showDifficultySelection(game) {
     currentGame = game;
@@ -49,6 +50,7 @@ function resetGameState() {
         player.stopVideo();
         player.destroy();
         player = null;
+        isPlayerReady = false;
     }
     document.getElementById('points').innerText = points;
     document.getElementById('feedback-popup').classList.add('d-none');
@@ -97,40 +99,46 @@ function loadQuestion() {
         answersContainer.appendChild(button);
     });
 
-    loadYouTubeVideo(questionData.video, questionData.start, questionData.end);
-}
-
-function loadYouTubeVideo(videoId, startSeconds, endSeconds) {
-    if (player) {
-        player.loadVideoById({ videoId, startSeconds, endSeconds });
+    if (!player) {
+        initializeYouTubePlayer(questionData.video, questionData.start, questionData.end);
     } else {
-        player = new YT.Player('player', {
-            height: '200',
-            width: '100%',
-            videoId,
-            playerVars: {
-                'start': startSeconds,
-                'end': endSeconds,
-                'loop': 1,
-                'controls': 0,
-                'modestbranding': 1
-            },
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            }
+        player.cueVideoById({
+            videoId: questionData.video,
+            startSeconds: questionData.start,
+            endSeconds: questionData.end
         });
     }
 }
 
+function initializeYouTubePlayer(videoId, startSeconds, endSeconds) {
+    player = new YT.Player('player', {
+        height: '200',
+        width: '100%',
+        videoId: videoId,
+        playerVars: {
+            'start': startSeconds,
+            'end': endSeconds,
+            'loop': 1,
+            'controls': 0,
+            'modestbranding': 1
+        },
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
 function onPlayerReady(event) {
-    event.target.playVideo();
+    isPlayerReady = true;
+    loadQuestion(); // Ensure the current question video is loaded
     document.getElementById('loader').classList.add('d-none');
+    event.target.playVideo();
 }
 
 function onPlayerStateChange(event) {
+    const questionData = questions[currentQuestionIndex];
     if (event.data == YT.PlayerState.ENDED) {
-        const questionData = questions[currentQuestionIndex];
         player.seekTo(questionData.start);
     }
 }
