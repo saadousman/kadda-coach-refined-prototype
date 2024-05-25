@@ -9,6 +9,7 @@ let questions = [];
 let currentGame = '';
 let player;
 let isPlayerReady = false;
+let isAPIReady = false;
 
 function showDifficultySelection(game) {
     currentGame = game;
@@ -98,18 +99,17 @@ function loadQuestion() {
         answersContainer.appendChild(button);
     });
 
-    if (!isPlayerReady) {
+    if (isAPIReady) {
         initializeYouTubePlayer(questionData.video, questionData.start, questionData.end);
     } else {
-        player.cueVideoById({
-            videoId: questionData.video,
-            startSeconds: questionData.start,
-            endSeconds: questionData.end
-        });
+        console.log('YouTube API is not ready yet.');
     }
 }
 
 function initializeYouTubePlayer(videoId, startSeconds, endSeconds) {
+    if (player) {
+        player.destroy();
+    }
     player = new YT.Player('player', {
         height: '200',
         width: '100%',
@@ -129,14 +129,15 @@ function initializeYouTubePlayer(videoId, startSeconds, endSeconds) {
 }
 
 function onPlayerReady(event) {
+    console.log('Player ready');
     isPlayerReady = true;
+    document.getElementById('loader').classList.add('d-none');
     const questionData = questions[currentQuestionIndex];
     player.cueVideoById({
         videoId: questionData.video,
         startSeconds: questionData.start,
         endSeconds: questionData.end
     });
-    document.getElementById('loader').classList.add('d-none');
     event.target.playVideo();
 }
 
@@ -212,6 +213,10 @@ function shareAchievement() {
 // Load YouTube IFrame API
 function onYouTubeIframeAPIReady() {
     console.log('YouTube API ready');
+    isAPIReady = true;
+    if (currentQuestionIndex < questions.length) {
+        loadQuestion();
+    }
 }
 
 let tag = document.createElement('script');
