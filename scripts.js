@@ -3,84 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('username').innerText = 'JohnDoe';
 });
 
-const easyQuestions = [
-    {
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-        question: 'What is the color of the sky in the video?',
-        answers: ['Red', 'Blue', 'Green', 'Yellow'],
-        correct: 1
-    },
-    {
-        video: 'https://www.youtube.com/embed/3JZ_D3ELwOQ',
-        question: 'What is the main character doing?',
-        answers: ['Running', 'Dancing', 'Sleeping', 'Cooking'],
-        correct: 1
-    },
-    {
-        video: 'https://www.youtube.com/embed/5NV6Rdv1a3I',
-        question: 'What is the color of the car?',
-        answers: ['Red', 'Blue', 'Black', 'White'],
-        correct: 2
-    },
-    {
-        video: 'https://www.youtube.com/embed/kJQP7kiw5Fk',
-        question: 'What is the main theme of the song?',
-        answers: ['Love', 'Adventure', 'Mystery', 'Friendship'],
-        correct: 0
-    },
-    {
-        video: 'https://www.youtube.com/embed/hT_nvWreIhg',
-        question: 'What are they talking about?',
-        answers: ['Weather', 'Food', 'Travel', 'Music'],
-        correct: 2
-    },
-    {
-        video: 'https://www.youtube.com/embed/YQHsXMglC9A',
-        question: 'What is the singer feeling?',
-        answers: ['Happy', 'Sad', 'Angry', 'Excited'],
-        correct: 1
-    }
-];
-
-const advancedQuestions = [
-    {
-        video: 'https://www.youtube.com/embed/L_jWHffIx5E',
-        question: 'What is the theme of the video?',
-        answers: ['Comedy', 'Drama', 'Action', 'Sci-fi'],
-        correct: 0
-    },
-    {
-        video: 'https://www.youtube.com/embed/2vjPBrBU-TM',
-        question: 'What is the artist primarily doing?',
-        answers: ['Singing', 'Dancing', 'Cooking', 'Playing Guitar'],
-        correct: 1
-    },
-    {
-        video: 'https://www.youtube.com/embed/uelHwf8o7_U',
-        question: 'What is the primary color theme of the video?',
-        answers: ['Black and White', 'Red', 'Blue', 'Green'],
-        correct: 0
-    },
-    {
-        video: 'https://www.youtube.com/embed/9bZkp7q19f0',
-        question: 'What is the main activity in the video?',
-        answers: ['Running', 'Dancing', 'Swimming', 'Singing'],
-        correct: 1
-    },
-    {
-        video: 'https://www.youtube.com/embed/3tmd-ClpJxA',
-        question: 'What is the main character doing?',
-        answers: ['Driving', 'Flying', 'Sailing', 'Riding'],
-        correct: 3
-    },
-    {
-        video: 'https://www.youtube.com/embed/lY2yjAdbvdQ',
-        question: 'What is the main theme of the song?',
-        answers: ['Love', 'Happiness', 'Sadness', 'Excitement'],
-        correct: 0
-    }
-];
-
 let currentQuestionIndex = 0;
 let points = 0;
 let questions = [];
@@ -97,12 +19,7 @@ function startGame(difficulty) {
     document.getElementById('game-screen').classList.remove('d-none');
     document.getElementById('game-title').innerText = `${difficulty} Comprehension Game`;
 
-    if (difficulty === 'Easy') {
-        questions = easyQuestions;
-    } else if (difficulty === 'Advanced') {
-        questions = advancedQuestions;
-    }
-    loadQuestion();
+    loadQuestions(difficulty);
 }
 
 function goBackToMain() {
@@ -131,6 +48,18 @@ function resetGameState() {
     document.getElementById('question').innerText = '';
     document.getElementById('answers-container').innerHTML = '';
     updateProgressBar();
+}
+
+function loadQuestions(difficulty) {
+    const filePath = difficulty === 'Easy' ? 'content/easyQuestions.json' : 'content/advancedQuestions.json';
+    
+    fetch(filePath)
+        .then(response => response.json())
+        .then(data => {
+            questions = data;
+            loadQuestion();
+        })
+        .catch(error => console.error('Error loading questions:', error));
 }
 
 function loadQuestion() {
