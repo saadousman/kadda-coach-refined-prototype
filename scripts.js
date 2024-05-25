@@ -62,9 +62,14 @@ function loadQuestions(difficulty) {
         .then(response => response.json())
         .then(data => {
             questions = data;
+            currentQuestionIndex = 0;
             loadQuestion();
         })
-        .catch(error => console.error('Error loading questions:', error));
+        .catch(error => {
+            console.error('Error loading questions:', error);
+            alert('Failed to load questions. Please try again.');
+            goBackToDifficulty();
+        });
 }
 
 function loadQuestion() {
