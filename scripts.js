@@ -6,8 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
 let currentQuestionIndex = 0;
 let points = 0;
 let questions = [];
+let currentGame = '';
 
-function showDifficultySelection() {
+function showDifficultySelection(game) {
+    currentGame = game;
     document.getElementById('main-screen').classList.add('d-none');
     document.getElementById('difficulty-screen').classList.remove('d-none');
 }
@@ -17,7 +19,7 @@ function startGame(difficulty) {
     document.getElementById('logo-container').classList.add('d-none');
     document.getElementById('difficulty-screen').classList.add('d-none');
     document.getElementById('game-screen').classList.remove('d-none');
-    document.getElementById('game-title').innerText = `${difficulty} Comprehension Game`;
+    document.getElementById('game-title').innerText = `${difficulty} ${currentGame} Game`;
 
     loadQuestions(difficulty);
 }
@@ -51,7 +53,9 @@ function resetGameState() {
 }
 
 function loadQuestions(difficulty) {
-    const filePath = difficulty === 'Easy' ? 'content/easyQuestions.json' : 'content/advancedQuestions.json';
+    const filePath = difficulty === 'Easy'
+        ? `content/easy${currentGame}Questions.json`
+        : `content/advanced${currentGame}Questions.json`;
     
     fetch(filePath)
         .then(response => response.json())

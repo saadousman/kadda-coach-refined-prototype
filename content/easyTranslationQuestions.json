@@ -1,0 +1,38 @@
+[
+    {
+        "video": "https://www.youtube.com/embed/C0DPdy98e4c",
+        "question": "Translate the word 'Hello' shown in the video.",
+        "answers": ["Hola", "Bonjour", "Ciao", "Hallo"],
+        "correct": 0
+    },
+    {
+        "video": "https://www.youtube.com/embed/ZyFfyFF4jfw",
+        "question": "Translate the word 'Thank You' shown in the video.",
+        "answers": ["Gracias", "Merci", "Danke", "Grazie"],
+        "correct": 0
+    },
+    {
+        "video": "https://www.youtube.com/embed/3JZ_D3ELwOQ",
+        "question": "Translate the word 'Goodbye' shown in the video.",
+        "answers": ["Adiós", "Au Revoir", "Arrivederci", "Tschüss"],
+        "correct": 0
+    },
+    {
+        "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "question": "Translate the word 'Please' shown in the video.",
+        "answers": ["Por Favor", "S'il Vous Plaît", "Per Favore", "Bitte"],
+        "correct": 0
+    },
+    {
+        "video": "https://www.youtube.com/embed/5NV6Rdv1a3I",
+        "question": "Translate the word 'Sorry' shown in the video.",
+        "answers": ["Lo Siento", "Désolé", "Scusa", "Entschuldigung"],
+        "correct": 0
+    },
+    {
+        "video": "https://www.youtube.com/embed/YQHsXMglC9A",
+        "question": "Translate the word 'Yes' shown in the video.",
+        "answers": ["Sí", "Oui", "Sì", "Ja"],
+        "correct": 0
+    }
+]

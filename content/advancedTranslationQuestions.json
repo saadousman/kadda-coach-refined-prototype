@@ -1,0 +1,38 @@
+[
+    {
+        "video": "https://www.youtube.com/embed/L_jWHffIx5E",
+        "question": "Translate the sentence 'How are you?' shown in the video.",
+        "answers": ["¿Cómo estás?", "Comment ça va?", "Come stai?", "Wie geht's?"],
+        "correct": 0
+    },
+    {
+        "video": "https://www.youtube.com/embed/2vjPBrBU-TM",
+        "question": "Translate the sentence 'Good morning' shown in the video.",
+        "answers": ["Buenos días", "Bonjour", "Buongiorno", "Guten Morgen"],
+        "correct": 0
+    },
+    {
+        "video": "https://www.youtube.com/embed/uelHwf8o7_U",
+        "question": "Translate the sentence 'I love you' shown in the video.",
+        "answers": ["Te amo", "Je t'aime", "Ti amo", "Ich liebe dich"],
+        "correct": 0
+    },
+    {
+        "video": "https://www.youtube.com/embed/9bZkp7q19f0",
+        "question": "Translate the sentence 'Good night' shown in the video.",
+        "answers": ["Buenas noches", "Bonne nuit", "Buona notte", "Gute Nacht"],
+        "correct": 0
+    },
+    {
+        "video": "https://www.youtube.com/embed/3tmd-ClpJxA",
+        "question": "Translate the sentence 'See you later' shown in the video.",
+        "answers": ["Hasta luego", "À plus tard", "A dopo", "Bis später"],
+        "correct": 0
+    },
+    {
+        "video": "https://www.youtube.com/embed/lY2yjAdbvdQ",
+        "question": "Translate the sentence 'Have a nice day' shown in the video.",
+        "answers": ["Que tengas un buen día", "Bonne journée", "Buona giornata", "Schönen Tag noch"],
+        "correct": 0
+    }
+]
