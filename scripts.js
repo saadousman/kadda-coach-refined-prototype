@@ -98,9 +98,9 @@ function loadQuestion() {
         answersContainer.appendChild(button);
     });
 
-    if (!player) {
+    if (!isPlayerReady) {
         initializeYouTubePlayer(questionData.video, questionData.start, questionData.end);
-    } else if (isPlayerReady) {
+    } else {
         player.cueVideoById({
             videoId: questionData.video,
             startSeconds: questionData.start,
@@ -129,15 +129,14 @@ function initializeYouTubePlayer(videoId, startSeconds, endSeconds) {
 }
 
 function onPlayerReady(event) {
-    console.log('Player ready');
     isPlayerReady = true;
-    document.getElementById('loader').classList.add('d-none');
     const questionData = questions[currentQuestionIndex];
     player.cueVideoById({
         videoId: questionData.video,
         startSeconds: questionData.start,
         endSeconds: questionData.end
     });
+    document.getElementById('loader').classList.add('d-none');
     event.target.playVideo();
 }
 
