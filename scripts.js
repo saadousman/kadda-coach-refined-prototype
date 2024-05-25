@@ -43,6 +43,7 @@ function goBackToDifficulty() {
 function resetGameState() {
     currentQuestionIndex = 0;
     points = 0;
+    questions = [];
     document.getElementById('points').innerText = points;
     document.getElementById('feedback-popup').classList.add('d-none');
     document.getElementById('next-button').classList.add('d-none');
