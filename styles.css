@@ -1,42 +1,32 @@
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
     margin: 0;
     padding: 0;
 }
 
-.container {
-    margin-top: 20px;
+.navbar {
+    padding: 0.5rem 1rem;
 }
 
-.text-center {
-    text-align: center;
+.navbar-brand {
+    font-weight: bold;
 }
 
-.logo {
-    width: 150px;
-    margin-top: 20px;
-    border-radius: 15px;
+.navbar-text {
+    font-size: 1em;
 }
 
-.fun-message {
-    font-size: 1.5em;
-    color: #ffcc00;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+.coin-icon {
+    width: 20px;
+    height: 20px;
 }
 
 .game-tile {
-    cursor: pointer;
-    background-color: #ffcc00;
+    margin-bottom: 10px;
+    text-align: center;
     border: none;
-    border-radius: 15px;
-    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
 }
 
@@ -44,75 +34,25 @@ body {
     transform: scale(1.05);
 }
 
-.card-body {
-    font-size: 1.2em;
-}
-
-.navbar {
+.game-tile .card-body {
     display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #ffffff;
-    border-bottom: 2px solid #ffcc00;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    background-color: #fff;
+    border-radius: 8px;
 }
 
-.navbar-text {
-    font-size: 1.2em;
-    color: #000000;
-}
+@media (max-width: 576px) {
+    .game-tile .card-body {
+        height: 100px;
+    }
 
-.coin-icon {
-    width: 20px;
-    margin-right: 5px;
-}
+    .navbar-brand {
+        font-size: 1.2em;
+    }
 
-.progress {
-    height: 20px;
-    background-color: #e0e0e0;
-    border-radius: 10px;
-}
-
-.progress-bar {
-    background-color: #ffcc00;
-    height: 100%;
-    border-radius: 10px;
-}
-
-.loader {
-    border: 16px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 16px solid #ffcc00;
-    width: 60px;
-    height: 60px;
-    animation: spin 2s linear infinite;
-    margin: auto;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.popup {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.rounded-frame {
-    border-radius: 15px;
-}
-
-.btn {
-    border-radius: 15px;
-}
-
-.my-4 {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    .navbar-text {
+        font-size: 0.9em;
+    }
 }
