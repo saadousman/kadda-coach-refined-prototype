@@ -1,26 +1,28 @@
 [
     {
+        "question": "What is the capital of France?",
         "video": "dQw4w9WgXcQ",
         "start": 10,
         "end": 20,
-        "question": "What is the color of the sky in the video?",
-        "answers": ["Red", "Blue", "Green", "Yellow"],
-        "correct": 1
-    },
-    {
-        "video": "dQw4w9WgXcQ",
-        "start": 10,
-        "end": 20,
-        "question": "What is the main character doing?",
-        "answers": ["Running", "Dancing", "Sleeping", "Cooking"],
-        "correct": 1
-    },
-    {
-        "video": "dQw4w9WgXcQ",
-        "start": 10,
-        "end": 20,
-        "question": "What is the color of the car?",
-        "answers": ["Red", "Blue", "Black", "White"],
+        "answers": [
+            "Berlin",
+            "Madrid",
+            "Paris",
+            "Rome"
+        ],
         "correct": 2
+    },
+    {
+        "question": "What is 2 + 2?",
+        "video": "dQw4w9WgXcQ",
+        "start": 20,
+        "end": 30,
+        "answers": [
+            "3",
+            "4",
+            "5",
+            "6"
+        ],
+        "correct": 1
     }
 ]

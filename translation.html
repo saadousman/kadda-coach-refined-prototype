@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation Game - Kadda Coach</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="difficulty-screen" class="container text-center">
+        <h2>Select Difficulty</h2>
+        <button class="btn btn-primary" onclick="startGame('Easy')">Easy</button>
+        <button class="btn btn-primary" onclick="startGame('Advanced')">Advanced</button>
+        <button class="btn btn-secondary mt-4" onclick="location.href='index.html'">Back to Home</button>
+    </div>
+    <div id="game-screen" class="container text-center d-none">
+        <nav class="navbar">
+            <span class="navbar-text">
+                <img src="https://image.shutterstock.com/image-vector/coin-icon-vector-260nw-597649073.jpg" alt="Coin" class="coin-icon">
+                <span id="points">0</span>
+            </span>
+            <span class="navbar-text" id="username">JohnDoe</span>
+        </nav>
+        <h2 id="game-title"></h2>
+        <div class="progress">
+            <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0;"></div>
+        </div>
+        <div id="video-container" class="my-4">
+            <div id="loader" class="loader"></div>
+            <div id="player"></div>
+        </div>
+        <p id="question" class="my-4"></p>
+        <div id="answers-container"></div>
+        <div id="feedback-popup" class="popup d-none">
+            <p id="feedback-message"></p>
+        </div>
+        <button id="next-button" class="btn btn-primary d-none">Next Question</button>
+        <button class="btn btn-secondary mt-4" onclick="goBackToDifficulty()">Back to Difficulty</button>
+    </div>
+    <div id="congrats-page" class="container text-center d-none">
+        <h2>Congratulations!</h2>
+        <iframe src="https://giphy.com/embed/xT0GqssRweIhlz209i" width="480" height="320" frameborder="0" class="giphy-embed rounded-frame" allowfullscreen></iframe>
+        <p id="final-score" class="my-4"></p>
+        <p>Well done you are great!</p>
+        <button class="btn btn-primary" onclick="location.href='index.html'">Go to Home</button>
+        <button class="btn btn-secondary" onclick="shareAchievement()">Share Achievement</button>
+    </div>
+    <script src="scripts/translation.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>

@@ -6,40 +6,17 @@ document.addEventListener('DOMContentLoaded', function() {
 let currentQuestionIndex = 0;
 let points = 0;
 let questions = [];
-let currentGame = '';
 let player;
 let isPlayerReady = false;
 let isAPIReady = false;
-
-function showDifficultySelection(game) {
-    currentGame = game;
-    document.getElementById('main-screen').classList.add('d-none');
-    document.getElementById('difficulty-screen').classList.remove('d-none');
-}
 
 function startGame(difficulty) {
     resetGameState();
     document.getElementById('difficulty-screen').classList.add('d-none');
     document.getElementById('game-screen').classList.remove('d-none');
-    document.getElementById('game-title').innerText = `${difficulty} ${currentGame} Game`;
+    document.getElementById('game-title').innerText = `${difficulty} Comprehension Game`;
 
     loadQuestions(difficulty);
-}
-
-function goBackToMain() {
-    resetGameState();
-    document.getElementById('logo-container').classList.remove('d-none');
-    document.getElementById('main-screen').classList.remove('d-none');
-    document.getElementById('difficulty-screen').classList.add('d-none');
-    document.getElementById('game-screen').classList.add('d-none');
-    document.getElementById('congrats-page').classList.add('d-none');
-}
-
-function goBackToDifficulty() {
-    resetGameState();
-    document.getElementById('difficulty-screen').classList.remove('d-none');
-    document.getElementById('game-screen').classList.add('d-none');
-    document.getElementById('congrats-page').classList.add('d-none');
 }
 
 function resetGameState() {
@@ -62,8 +39,8 @@ function resetGameState() {
 
 function loadQuestions(difficulty) {
     const filePath = difficulty === 'Easy'
-        ? `content/easy${currentGame}Questions.json`
-        : `content/advanced${currentGame}Questions.json`;
+        ? 'content/easyComprehensionQuestions.json'
+        : 'content/advancedComprehensionQuestions.json';
     
     fetch(filePath)
         .then(response => response.json())
@@ -74,7 +51,7 @@ function loadQuestions(difficulty) {
         })
         .catch(error => {
             console.error('Error loading questions:', error);
-            alert(`Failed to load questions. Please check the console for more details.`);
+            alert('Failed to load questions.');
             goBackToDifficulty();
         });
 }
@@ -114,15 +91,15 @@ function initializeYouTubePlayer(videoId, startSeconds, endSeconds) {
         width: '100%',
         videoId: videoId,
         playerVars: {
-            'start': startSeconds,
-            'end': endSeconds,
-            'loop': 1,
-            'controls': 0,
-            'modestbranding': 1
+            start: startSeconds,
+            end: endSeconds,
+            loop: 1,
+            controls: 0,
+            modestbranding: 1
         },
         events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange
         }
     });
 }
@@ -197,18 +174,6 @@ function showCongrats() {
     document.getElementById('final-score').innerText = `Your final score is: ${points}`;
 }
 
-function shareAchievement() {
-    if (navigator.share) {
-        navigator.share({
-            title: 'Kadda Coach',
-            text: 'I completed the comprehension game and scored high! Check out this awesome GIF!',
-            url: 'https://giphy.com/embed/xT0GqssRweIhlz209i'
-        });
-    } else {
-        alert('Web Share API is not supported in your browser.');
-    }
-}
-
 // Load YouTube IFrame API
 function onYouTubeIframeAPIReady() {
     console.log('YouTube API ready');
@@ -219,6 +184,6 @@ function onYouTubeIframeAPIReady() {
 }
 
 let tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
+tag.src = 'https://www.youtube.com/iframe_api';
 let firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
