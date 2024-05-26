@@ -1,177 +1,91 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #fff9e5; /* Light yellow background */
+    background-color: #f0f0f0;
     margin: 0;
     padding: 0;
 }
 
-.navbar {
-    background-color: #ffffff; /* Light background */
-    padding: 0.5rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.container {
+    margin-top: 20px;
 }
 
-.navbar-text {
-    font-size: 1em;
-    font-weight: bold;
-    color: #000000; /* Black text */
-}
-
-.coin-icon {
-    width: 20px;
-    height: 20px;
+.text-center {
+    text-align: center;
 }
 
 .logo {
-    height: 120px; /* Larger logo */
-    border-radius: 15px; /* Rounded edges */
-    border: 2px solid #ffcc00; /* Yellow border */
-    margin-top: 1rem;
+    width: 150px;
+    margin-top: 20px;
+    border-radius: 15px;
 }
 
 .fun-message {
-    font-size: 1.5rem;
-    color: #000000; /* Black color */
-    font-weight: bold;
-    margin-top: 1rem;
-    animation: fadeInOut 3s ease-in-out infinite;
+    font-size: 1.5em;
+    color: #ffcc00;
+    animation: pulse 2s infinite;
 }
 
-@keyframes fadeInOut {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 .game-tile {
-    margin-bottom: 10px;
-    text-align: center;
-    border: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-    background-color: #ffffff; /* White background */
-    border-radius: 15px; /* Rounded edges */
     cursor: pointer;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 15px;
+    padding: 20px;
+    transition: transform 0.2s;
 }
 
 .game-tile:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.game-tile .card-body {
+.card-body {
+    font-size: 1.2em;
+}
+
+.navbar {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 120px;
-    background-color: #ffcc00; /* Yellow background */
-    border-radius: 15px;
-    color: #000000; /* Black text */
-    transition: background-color 0.2s, color 0.2s;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #ffffff;
+    border-bottom: 2px solid #ffcc00;
 }
 
-.game-tile .card-body:active {
-    background-color: #f5b700; /* Darker yellow when clicked */
-    color: #ffffff; /* White text when clicked */
+.navbar-text {
+    font-size: 1.2em;
+    color: #000000;
 }
 
-.d-none {
-    display: none;
+.coin-icon {
+    width: 20px;
+    margin-right: 5px;
 }
 
 .progress {
-    height: 25px;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
 }
 
 .progress-bar {
     background-color: #ffcc00;
-}
-
-#game-container {
-    text-align: center;
-}
-
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffffff; /* White background */
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    z-index: 10;
-    text-align: center;
-    border: 2px solid #ffcc00; /* Yellow border */
-    animation: popup-appear 0.3s ease-in-out;
-}
-
-@keyframes popup-appear {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-}
-
-#feedback-popup p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
-
-#fireworks-container {
-    height: 200px;
-}
-
-#smiley-animation {
-    margin: 0 auto 20px;
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.answer-btn {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    transition: transform 0.2s, background-color 0.2s;
-    border-radius: 15px;
-}
-
-.answer-btn:hover {
-    transform: scale(1.05);
-    background-color: #ffd700; /* Bright yellow */
-}
-
-.btn-primary {
-    background-color: #ffcc00;
-    border-color: #ffcc00;
-    color: #000;
-    border-radius: 15px;
-}
-
-.btn-primary:hover {
-    background-color: #ffd700;
-    border-color: #ffd700;
-    color: #000;
-}
-
-.rounded-frame {
-    border-radius: 15px;
-    overflow: hidden;
+    height: 100%;
+    border-radius: 10px;
 }
 
 .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #ffcc00; /* Yellow */
+    border: 16px solid #f3f3f3;
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
+    border-top: 16px solid #ffcc00;
+    width: 60px;
+    height: 60px;
     animation: spin 2s linear infinite;
-    margin: 20px auto;
+    margin: auto;
 }
 
 @keyframes spin {
@@ -179,16 +93,26 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-@media (max-width: 576px) {
-    .game-tile .card-body {
-        height: 100px;
-    }
+.popup {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
-    .navbar-text {
-        font-size: 0.9em;
-    }
+.rounded-frame {
+    border-radius: 15px;
+}
 
-    .logo {
-        height: 100px; /* Adjust logo size for smaller screens */
-    }
+.btn {
+    border-radius: 15px;
+}
+
+.my-4 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
