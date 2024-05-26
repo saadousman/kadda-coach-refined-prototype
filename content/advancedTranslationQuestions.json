@@ -1,0 +1,29 @@
+[
+    {
+        "question": "Translate the following phrase: 'How are you?'",
+        "video": "M7lc1UVf-VE",
+        "start": 50,
+        "end": 60,
+        "answers": [
+            "¿Cómo estás?",
+            "¿Qué tal?",
+            "¿Cómo eres?",
+            "¿Cómo te llamas?"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Translate the following phrase: 'See you later'",
+        "video": "M7lc1UVf-VE",
+        "start": 60,
+        "end": 70,
+        "answers": [
+            "Hasta luego",
+            "Hasta mañana",
+            "Hasta pronto",
+            "Adiós"
+        ],
+        "correct": 0
+    },
+    // Add more questions as needed
+]

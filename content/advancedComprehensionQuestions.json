@@ -1,0 +1,38 @@
+[
+    {
+        "video": "https://www.youtube.com/embed/L_jWHffIx5E",
+        "question": "What is the theme of the video?",
+        "answers": ["Comedy", "Drama", "Action", "Sci-fi"],
+        "correct": 0
+    },
+    {
+        "video": "https://www.youtube.com/embed/2vjPBrBU-TM",
+        "question": "What is the artist primarily doing?",
+        "answers": ["Singing", "Dancing", "Cooking", "Playing Guitar"],
+        "correct": 1
+    },
+    {
+        "video": "https://www.youtube.com/embed/uelHwf8o7_U",
+        "question": "What is the primary color theme of the video?",
+        "answers": ["Black and White", "Red", "Blue", "Green"],
+        "correct": 0
+    },
+    {
+        "video": "https://www.youtube.com/embed/9bZkp7q19f0",
+        "question": "What is the main activity in the video?",
+        "answers": ["Running", "Dancing", "Swimming", "Singing"],
+        "correct": 1
+    },
+    {
+        "video": "https://www.youtube.com/embed/3tmd-ClpJxA",
+        "question": "What is the main character doing?",
+        "answers": ["Driving", "Flying", "Sailing", "Riding"],
+        "correct": 3
+    },
+    {
+        "video": "https://www.youtube.com/embed/lY2yjAdbvdQ",
+        "question": "What is the main theme of the song?",
+        "answers": ["Love", "Happiness", "Sadness", "Excitement"],
+        "correct": 0
+    }
+]
