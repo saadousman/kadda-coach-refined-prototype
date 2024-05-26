@@ -19,7 +19,6 @@ function showDifficultySelection(game) {
 
 function startGame(difficulty) {
     resetGameState();
-    document.getElementById('logo-container').classList.add('d-none');
     document.getElementById('difficulty-screen').classList.add('d-none');
     document.getElementById('game-screen').classList.remove('d-none');
     document.getElementById('game-title').innerText = `${difficulty} ${currentGame} Game`;
